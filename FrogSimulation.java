@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class FrogSimulation {
     /** Distance, in inches, from the starting position to the goal. */
     private int goalDistance;
@@ -16,7 +18,9 @@ public class FrogSimulation {
     /** Returns an integer representing the distance, in inches, to be moved when the frog hops.
     */
     private int hopDistance() {
-        
+        Scanner s = new Scanner(System.in);
+        System.out.println("How far?");
+        return s.nextInt();
     }
 
     /** Simulates a frog attempting to reach the goal as described in part (a).
@@ -24,7 +28,19 @@ public class FrogSimulation {
     * false otherwise.
     */
     public boolean simulate() {
-
+        int hops = 0;
+        int distance = 0;
+        while(hops < maxHops) {
+            distance += hopDistance();
+            if(distance < 0) {
+                return false;
+            }
+            if(distance >= goalDistance) {
+                return true;
+            }
+            hops++;
+        }
+        return false;
     }
 
     /** Runs num simulations and returns the proportion of simulations in which the frog
