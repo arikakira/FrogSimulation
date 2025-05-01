@@ -47,6 +47,13 @@ public class FrogSimulation {
     * successfully reached or passed the goal.
     * Precondition: num > 0
     */
-    public double runSimulations(int num)
-    { /* to be implemented in part (b) */ }
+    public double runSimulations(int num) {
+        double successes = 0;
+        for(int i=0; i<num; i++) {
+            if(simulate()) {
+                successes++;
+            }
+        }
+        return successes / num;
+    }
 }
